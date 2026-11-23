@@ -1,0 +1,41 @@
+{
+  "name": "dsh-plugin-chat-reply-metrics",
+  "version": "1.1.2",
+  "private": true,
+  "description": "Shows the estimated cost of the latest completed model call below the chat composer.",
+  "type": "module",
+  "engines": {
+    "dsh": "0.2.2-rc.5"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-chat",
+        "@deepseek-ai/dsh-client-ui-trajectory",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}

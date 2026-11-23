@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Chat reply metrics",
+    "description": "Shows the estimated cost of the latest completed model call below the chat composer."
+  }
+}
