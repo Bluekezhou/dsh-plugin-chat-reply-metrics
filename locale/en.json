@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chat reply metrics",
-    "description": "Shows the estimated cost of the latest completed model call below the chat composer."
+    "title": "DSH Chat reply metrics",
+    "description": "Explore estimated costs for sessions and subagents by model, with optional daily reports via the bound Feishu bot."
   }
 }

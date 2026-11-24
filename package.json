@@ -1,8 +1,9 @@
 {
   "name": "dsh-plugin-chat-reply-metrics",
   "version": "0.1.0",
+  "peerDependencies": { "@deepseek-ai/dsh-typert-protocol": "0.2.2-rc.5", "@deepseek-ai/schemastery": "3.19.0" },
   "private": true,
-  "description": "Shows the estimated cost of the latest completed model call below the chat composer.",
+  "description": "Session and subagent cost reports by model, with daily Feishu summaries.",
   "type": "module",
   "engines": {
     "dsh": "0.2.2-rc.5"
@@ -20,6 +21,10 @@
   },
   "files": [
     "index.js",
+    "ledger.js",
+    "daily.js",
+    "src/metrics.js",
+    "data/rates.json",
     "client.js",
     "cordis.patch.yml",
     "locale/*.json",
@@ -33,6 +38,7 @@
       "platform": "web",
       "immediately": true,
       "inject": [
+        "@deepseek-ai/dsh-client-connection",
         "@deepseek-ai/dsh-client-ui-chat",
         "@deepseek-ai/dsh-client-ui-trajectory",
         "@deepseek-ai/dsh-client-locale"
