@@ -16,6 +16,16 @@ test('configured GLM overrides are priced by model ID',()=>{
   assert.equal(lookup('glm-5.3'),1.19);assert.equal(lookup('glm-5.3-flash'),0.12);
   assert.equal(lookup('glm-5.2-highspeed'),1.4);assert.equal(lookup('glm-5.3-highspeed'),1.19);assert.equal(lookup('glm-4.6v'),0.15);
 });
+test('provider-prefixed routes price by the longest hyphen-boundary suffix',()=>{
+  const lookup=model=>measure({requestConfig:{model},usage:{inputTokens:1_000_000,outputTokens:0}},prices).cost;
+  assert.equal(lookup('anthropic-kimi-k3'),3);assert.equal(lookup('kimi-k3'),3);
+  assert.equal(lookup('gw-glm-5.3-flash'),0.12);assert.equal(lookup('gw-glm-5.3'),1.19);
+  assert.equal(lookup('someone-claude-haiku-5-5'),0.5);
+});
+test('suffix matching never crosses segment boundaries or guesses',()=>{
+  const lookup=model=>measure({requestConfig:{model},usage:{inputTokens:1_000_000,outputTokens:0}},prices).cost;
+  for(const model of ['xkimi-k3','kimi-k3x','glm-5.3-flash-extra','k3','moonshot'])assert.equal(lookup(model),null);
+});
 test('unknown model names are not guessed',()=>{
   for(const model of ['gpt-6.2-astra-custom','toString',undefined])assert.equal(measure({...node,providerMetadata:{model}},prices).cost,null);
 });
