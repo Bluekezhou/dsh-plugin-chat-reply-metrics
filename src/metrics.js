@@ -6,7 +6,7 @@ export function latestCall(snapshot) {
 // Rate lookup: exact model ID first, then the longest catalog key that is a
 // hyphen-boundary suffix, so provider-prefixed routes like `anthropic-kimi-k3`
 // price as `kimi-k3` without per-prefix entries. Unknown names stay unpriced.
-function rateCard(model, prices) {
+export function rateCard(model, prices) {
   if (typeof model !== 'string') return null;
   if (Object.hasOwn(prices, model)) return prices[model];
   let best = null;
