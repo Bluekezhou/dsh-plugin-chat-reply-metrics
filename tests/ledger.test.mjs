@@ -28,7 +28,7 @@ test('counts local suffixes exactly once in global, selected and nested agent sc
   add('C', [call()], 'B', 'subagent');
   add('D', [call(), call()], 'A', undefined, 1);
   const a = await ledger.query({ sessionId: 'A' });
-  assert.deepEqual(a.total, { calls: 3, knownCalls: 2, unknownCalls: 1, knownCostUsd: 4350/1e6 });
+  assert.deepEqual(a.total, { calls: 3, knownCalls: 2, unknownCalls: 1, knownCostUsd: 3440/1e6 });
   assert.equal(a.self.calls, 1); assert.equal(a.descendants.calls, 2);
   assert.deepEqual(a.models.map(row => [row.model,row.calls]), [[model,2],['unpriced',1]]);
   const b = await ledger.query({ sessionId: 'B' }); assert.equal(b.self.unknownCalls, 1); assert.equal(b.descendants.calls, 1);
@@ -61,5 +61,5 @@ test('counts actual compaction calls once, ignores attempts, local summaries, an
     { type: 'compaction/summary', data: { model: 'local' } },
     { type: 'compaction/summary', data: { model, usage, llmStreamCall:true }, time: midnight },
     { ...call(), data: { ...call().data, usage: undefined } }]);
-  const { total } = await ledger.query(); assert.deepEqual(total, { calls:2, knownCalls:1, unknownCalls:1, knownCostUsd:2175/1e6 });
+  const { total } = await ledger.query(); assert.deepEqual(total, { calls:2, knownCalls:1, unknownCalls:1, knownCostUsd:1720/1e6 });
 });

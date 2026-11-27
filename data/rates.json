@@ -282,16 +282,16 @@
     ]
   },
   "gpt-6.2-astra": {
-    "input": 10,
-    "output": 50,
-    "cacheRead": 1,
-    "cacheWrite": 12.5,
+    "input": 8,
+    "output": 40,
+    "cacheRead": 0.4,
+    "cacheWrite": 10,
     "tiers": [
       {
-        "input": 20,
-        "output": 75,
-        "cacheRead": 2,
-        "cacheWrite": 25,
+        "input": 16,
+        "output": 60,
+        "cacheRead": 0.8,
+        "cacheWrite": 20,
         "inputTokensAbove": 272000
       }
     ]
