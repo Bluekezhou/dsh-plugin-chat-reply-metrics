@@ -6,6 +6,13 @@
     "cacheWrite": 0,
     "tiers": []
   },
+  "anthropic-kimi-k3": {
+    "input": 3,
+    "output": 15,
+    "cacheRead": 0.3,
+    "cacheWrite": 0,
+    "tiers": []
+  },
   "claude-fable-5": {
     "input": 10,
     "output": 50,
